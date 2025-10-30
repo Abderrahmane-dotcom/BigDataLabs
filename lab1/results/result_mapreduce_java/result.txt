@@ -1,0 +1,211 @@
+root@hadoop-master:~# hadoop jar /shared_volume/hadoop-app.jar /user/root/input/purchases.txt /user/root/output_wordcount
+2025-10-09 08:28:34,141 INFO client.RMProxy: Connecting to ResourceManager at hadoop-master/172.19.0.4:8032
+2025-10-09 08:28:34,335 INFO client.AHSProxy: Connecting to Application History server at localhost/127.0.0.1:10200
+2025-10-09 08:28:34,673 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2025-10-09 08:28:34,698 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/root/.staging/job_1759996274377_0001
+2025-10-09 08:28:35,936 INFO input.FileInputFormat: Total input files to process : 1
+2025-10-09 08:28:36,056 INFO mapreduce.JobSubmitter: number of splits:1
+2025-10-09 08:28:36,141 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+2025-10-09 08:28:36,297 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1759996274377_0001
+2025-10-09 08:28:36,299 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2025-10-09 08:28:36,467 INFO conf.Configuration: resource-types.xml not found
+2025-10-09 08:28:36,467 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2025-10-09 08:28:36,933 INFO impl.YarnClientImpl: Submitted application application_1759996274377_0001
+2025-10-09 08:28:37,000 INFO mapreduce.Job: The url to track the job: http://hadoop-master:8088/proxy/application_1759996274377_0001/
+2025-10-09 08:28:37,001 INFO mapreduce.Job: Running job: job_1759996274377_0001
+2025-10-09 08:28:45,102 INFO mapreduce.Job: Job job_1759996274377_0001 running in uber mode : false
+2025-10-09 08:28:45,104 INFO mapreduce.Job:  map 0% reduce 0%
+2025-10-09 08:28:49,156 INFO mapreduce.Job:  map 100% reduce 0%
+2025-10-09 08:28:54,204 INFO mapreduce.Job:  map 100% reduce 100%
+2025-10-09 08:28:54,219 INFO mapreduce.Job: Job job_1759996274377_0001 completed successfully
+2025-10-09 08:28:54,297 INFO mapreduce.Job: Counters: 54
+        File System Counters
+                FILE: Number of bytes read=1637
+                FILE: Number of bytes written=446663
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=2669
+                HDFS: Number of bytes written=1142
+                HDFS: Number of read operations=8
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Launched reduce tasks=1
+                Data-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=2404
+                Total time spent by all reduces in occupied slots (ms)=1956
+                Total time spent by all map tasks (ms)=2404
+                Total time spent by all reduce tasks (ms)=1956
+                Total vcore-milliseconds taken by all map tasks=2404
+                Total vcore-milliseconds taken by all reduce tasks=1956
+                Total megabyte-milliseconds taken by all map tasks=2461696
+                Total megabyte-milliseconds taken by all reduce tasks=2002944
+        Map-Reduce Framework
+                Map input records=50
+                Map output records=333
+                Map output bytes=3833
+                Map output materialized bytes=1637
+                Input split bytes=120
+                Combine input records=333
+                Combine output records=124
+                Reduce input groups=124
+                Reduce shuffle bytes=1637
+                Reduce input records=124
+                Reduce output records=124
+                Spilled Records=248
+                Shuffled Maps =1
+                Failed Shuffles=0
+                Merged Map outputs=1
+                GC time elapsed (ms)=92
+                CPU time spent (ms)=790
+                Physical memory (bytes) snapshot=526692352
+                Virtual memory (bytes) snapshot=5308149760
+                Total committed heap usage (bytes)=469237760
+                Peak Map Physical memory (bytes)=310091776
+                Peak Map Virtual memory (bytes)=2649911296
+                Peak Reduce Physical memory (bytes)=216600576
+                Peak Reduce Virtual memory (bytes)=2658238464
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters
+                Bytes Read=2549
+        File Output Format Counters
+                Bytes Written=1142
+root@hadoop-master:~# hdfs dfs -ls /user/root/output_wordcount
+Found 2 items
+-rw-r--r--   2 root supergroup          0 2025-10-09 08:28 /user/root/output_wordcount/_SUCCESS
+-rw-r--r--   2 root supergroup       1142 2025-10-09 08:28 /user/root/output_wordcount/part-r-00000
+root@hadoop-master:~# hdfs dfs -cat /user/root/output_wordcount/part-r-00000
+09:00   22
+09:01   22
+09:02   6
+108.69  1
+117.81  1
+135.96  1
+136.9   1
+15.41   1
+153.57  1
+16.78   1
+170.2   1
+182.05  1
+189.01  1
+2012-01-01      50
+205.06  1
+213.88  1
+214.05  1
+215.82  1
+22.36   1
+222.61  1
+235.63  1
+247.18  1
+25.38   1
+252.88  1
+255.68  1
+260.65  1
+287.65  1
+290.82  1
+296.8   1
+298.86  1
+3.85    1
+309.16  1
+31.08   1
+327.75  1
+344.09  1
+345.18  1
+351.31  1
+370.55  1
+376.11  1
+379.6   1
+39.75   1
+414.08  1
+418.94  1
+466.64  1
+469.63  1
+475.26  1
+483.82  1
+493.51  1
+53.26   1
+6.38    1
+66.08   1
+80.46   1
+88.25   1
+93.39   1
+Amex    10
+Anchorage       3
+Aurora  1
+Austin  3
+Baby    4
+Beach   1
+Bernardino      1
+Books   5
+Boston  1
+Buffalo 1
+CDs     2
+Cameras 4
+Cash    10
+Chandler        2
+Chicago 1
+Children's      2
+Christi 1
+Clothing        10
+Computers       2
+Consumer        4
+Corpus  1
+Crafts  2
+DVDs    3
+Diego   1
+Discover        8
+Electronics     4
+Fort    3
+Francisco       1
+Fremont 1
+Fresno  1
+Games   2
+Garden  2
+Goods   3
+Greensboro      1
+Honolulu        1
+Houston 1
+Indianapolis    1
+Jose    2
+Las     2
+Lincoln 1
+Madison 1
+MasterCard      9
+Men's   4
+Minneapolis     1
+Music   3
+New     1
+Newark  1
+Norfolk 1
+Omaha   2
+Pet     1
+Philadelphia    1
+Pittsburgh      2
+Portland        1
+Reno    2
+Riverside       2
+San     5
+Spokane 2
+Sporting        3
+Stockton        1
+Supplies        1
+Toys    3
+Tulsa   1
+Vegas   2
+Video   2
+Virginia        1
+Visa    13
+Wayne   1
+Women's 4
+Worth   2
+York    1
+root@hadoop-master:~#

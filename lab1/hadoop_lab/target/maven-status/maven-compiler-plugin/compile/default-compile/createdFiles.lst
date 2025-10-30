@@ -1,0 +1,3 @@
+edu\ensias\hadoop\mapreduce\IntSumReducer.class
+edu\ensias\hadoop\mapreduce\WordCount.class
+edu\ensias\hadoop\mapreduce\TokenizerMapper.class
