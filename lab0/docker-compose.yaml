@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  hadoop-master:
+    image: yassern1/hadoop-spark-jupyter:1.0.3
+    container_name: hadoop-master
+    hostname: hadoop-master
+    stdin_open: true   # keep STDIN open
+    tty: true
+    ports:
+      - "9870:9870"   # HDFS NameNode UI
+      - "8088:8088"   # YARN ResourceManager UI
+      - "7077:7077"   # Spark Master
+      - "19888:19888" # JobHistory Server
+      - "8080:8080"   # Jupyter Notebook
+      - "9000:9000"   # HDFS Namenode RPC
+    networks:
+      - hadoop
+    volumes:
+      - "C:/Users/abder/Documents/hadoop_project:/shared_volume"
+
+  hadoop-slave1:
+    image: yassern1/hadoop-spark-jupyter:1.0.3
+    container_name: hadoop-slave1
+    hostname: hadoop-slave1
+    stdin_open: true   # keep STDIN open
+    tty: true
+    ports:
+      - "8040:8042"   # NodeManager UI
+    networks:
+      - hadoop
+
+  hadoop-slave2:
+    image: yassern1/hadoop-spark-jupyter:1.0.3
+    container_name: hadoop-slave2
+    hostname: hadoop-slave2
+    stdin_open: true   # keep STDIN open
+    tty: true
+    ports:
+      - "8041:8042"   # NodeManager UI
+    networks:
+      - hadoop
+
+networks:
+  hadoop:
+    driver: bridge
