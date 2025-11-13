@@ -1,0 +1,668 @@
+INFO  : Completed executing command(queryId=hive_20251113110021_7a745a11-6ec6-47d2-8399-58af406e0c75); Time taken: 0.0 seconds
++--------------------+-------------------+-------------------------------+--------------------+
+| clients.client_id  |    clients.nom    |         clients.email         | clients.telephone  |
++--------------------+-------------------+-------------------------------+--------------------+
+| 1                  | John Doe          | john.doe@example.com          | 1234567890         |
+| 2                  | Sarah Connor      | sarah.connor@example.com      | 0987654321         |
+| 3                  | James Bond        | james.bond@example.com        | 1122334455         |
+| 4                  | Lara Croft        | lara.croft@example.com        | 2233445566         |
+| 5                  | Maria Gonzalez    | maria.g@example.com           | 3344556677         |
+| 6                  | Alex Dupont       | alex.dupont@example.com       | 4455667788         |
+| 7                  | Sophie Martin     | sophie.martin@example.com     | 5566778899         |
+| 8                  | Paul Durand       | paul.durand@example.com       | 6677889900         |
+| 9                  | Emily Davis       | emily.davis@example.com       | 7788990011         |
+| 10                 | Robert Brown      | robert.brown@example.com      | 8899001122         |
+| 11                 | Alice Cooper      | alice.cooper@example.com      | 9900112233         |
+| 12                 | David Miller      | david.miller@example.com      | 1111223344         |
+| 13                 | Laura Wilson      | laura.wilson@example.com      | 2222334455         |
+| 14                 | Chris Evans       | chris.evans@example.com       | 3333445566         |
+| 15                 | Megan Fox         | megan.fox@example.com         | 4444556677         |
+| 16                 | Oscar Wilde       | oscar.wilde@example.com       | 5555667788         |
+| 17                 | Rachel Green      | rachel.green@example.com      | 6666778899         |
+| 18                 | Ryan Gosling      | ryan.gosling@example.com      | 7777889900         |
+| 19                 | Emma Watson       | emma.watson@example.com       | 8888990011         |
+| 20                 | Henry Cavill      | henry.cavill@example.com      | 9999001122         |
+| 21                 | Clara Oswald      | clara.oswald@example.com      | 1000112233         |
+| 22                 | Peter Parker      | peter.parker@example.com      | 1011223344         |
+| 23                 | Bruce Wayne       | bruce.wayne@example.com       | 1022334455         |
+| 24                 | Diana Prince      | diana.prince@example.com      | 1033445566         |
+| 25                 | Clark Kent        | clark.kent@example.com        | 1044556677         |
+| 26                 | Tony Stark        | tony.stark@example.com        | 1055667788         |
+| 27                 | Natasha Romanoff  | natasha.romanoff@example.com  | 1066778899         |
+| 28                 | Steve Rogers      | steve.rogers@example.com      | 1077889900         |
+| 29                 | Carol Danvers     | carol.danvers@example.com     | 1088990011         |
+| 30                 | Wanda Maximoff    | wanda.maximoff@example.com    | 1099001122         |
++--------------------+-------------------+-------------------------------+--------------------+
+30 rows selected (0.104 seconds)
+>>>
+>>>  -- 2. Lister tous les hôtels à Paris
+>>>  SELECT * FROM hotels WHERE ville='Paris';
+INFO  : Compiling command(queryId=hive_20251113110021_aa692e17-d662-4290-9bbd-2a528b874e90): SELECT * FROM hotels WHERE ville='Paris'
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:hotels.hotel_id, type:int, comment:null), FieldSchema(name:hotels.nom, type:string, comment:null), FieldSchema(name:hotels.etoiles, type:int, comment:null), FieldSchema(name:hotels.ville, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110021_aa692e17-d662-4290-9bbd-2a528b874e90); Time taken: 0.134 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110021_aa692e17-d662-4290-9bbd-2a528b874e90): SELECT * FROM hotels WHERE ville='Paris'
+INFO  : Completed executing command(queryId=hive_20251113110021_aa692e17-d662-4290-9bbd-2a528b874e90); Time taken: 0.0 seconds
++------------------+--------------+-----------------+---------------+
+| hotels.hotel_id  |  hotels.nom  | hotels.etoiles  | hotels.ville  |
++------------------+--------------+-----------------+---------------+
+| 1                | Grand Hotel  | 5               | Paris         |
++------------------+--------------+-----------------+---------------+
+1 row selected (0.144 seconds)
+>>>
+>>>  -- 3. Lister toutes les réservations avec infos clients et hôtels
+>>>  SELECT r.reservation_id, c.nom AS client, h.nom AS hotel, r.date_debut, r.date_fin, r.prix_total
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id;
+INFO  : Compiling command(queryId=hive_20251113110021_ae8ffa92-1092-4cf8-849e-d7abf7b36d91): SELECT r.reservation_id, c.nom AS client, h.nom AS hotel, r.date_debut, r.date_fin, r.prix_total
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+INFO  : No Stats for hotel_booking@clients, Columns: nom, client_id
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:r.reservation_id, type:int, comment:null), FieldSchema(name:client, type:string, comment:null), FieldSchema(name:hotel, type:string, comment:null), FieldSchema(name:r.date_debut, type:date, comment:null), FieldSchema(name:r.date_fin, type:date, comment:null), FieldSchema(name:r.prix_total, type:decimal(10,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110021_ae8ffa92-1092-4cf8-849e-d7abf7b36d91); Time taken: 0.365 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110021_ae8ffa92-1092-4cf8-849e-d7abf7b36d91): SELECT r.reservation_id, c.nom AS client, h.nom AS hotel, r.date_debut, r.date_fin, r.prix_total
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+INFO  : Query ID = hive_20251113110021_ae8ffa92-1092-4cf8-849e-d7abf7b36d91
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110021_ae8ffa92-1092-4cf8-849e-d7abf7b36d91
+INFO  : Session is already open
+INFO  : Dag name: SELECT r.reservation_......l_id = h.hotel_id (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110021_ae8ffa92-1092-4cf8-849e-d7abf7b36d91], Dag ID: [dag_1763031607104_0001_3], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110021_ae8ffa92-1092-4cf8-849e-d7abf7b36d91); Time taken: 0.737 seconds
++-------------------+-------------------+--------------------+---------------+-------------+---------------+
+| r.reservation_id  |      client       |       hotel        | r.date_debut  | r.date_fin  | r.prix_total  |
++-------------------+-------------------+--------------------+---------------+-------------+---------------+
+| 5                 | Maria Gonzalez    | Luxury Palace      | 2024-12-11    | 2024-12-13  | 2000.00       |
+| 12                | David Miller      | Forest Escape      | 2024-12-10    | 2024-12-12  | 1800.00       |
+| 14                | Chris Evans       | Villa Tranquille   | 2024-12-18    | 2024-12-21  | 1400.00       |
+| 15                | Megan Fox         | Lakeview Resort    | 2024-12-11    | 2024-12-14  | 2100.00       |
+| 16                | Oscar Wilde       | Château Bellevue   | 2024-12-02    | 2024-12-06  | 1300.00       |
+| 22                | Peter Parker      | Golden Sands       | 2024-12-08    | 2024-12-11  | 1800.00       |
+| 23                | Bruce Wayne       | Oceanic Hotel      | 2024-12-10    | 2024-12-13  | 2400.00       |
+| 24                | Diana Prince      | Hilltop Inn        | 2024-12-12    | 2024-12-15  | 2200.00       |
+| 25                | Clark Kent        | Cloud Nine         | 2024-12-09    | 2024-12-12  | 2000.00       |
+| 28                | Steve Rogers      | Royal Retreat      | 2024-12-02    | 2024-12-06  | 1200.00       |
+| 2                 | Sarah Connor      | Beach Resort       | 2024-12-10    | 2024-12-15  | 800.00        |
+| 6                 | Alex Dupont       | Sea Breeze         | 2024-12-01    | 2024-12-03  | 1200.00       |
+| 7                 | Sophie Martin     | Country Retreat    | 2024-12-15    | 2024-12-20  | 1000.00       |
+| 10                | Robert Brown      | Eco Stay           | 2024-12-25    | 2024-12-28  | 500.00        |
+| 17                | Rachel Green      | Sunrise Inn        | 2024-12-04    | 2024-12-08  | 900.00        |
+| 21                | Clara Oswald      | Winter Haven       | 2024-12-06    | 2024-12-10  | 1200.00       |
+| 27                | Natasha Romanoff  | Heritage Hotel     | 2024-12-20    | 2024-12-23  | 1400.00       |
+| 30                | Wanda Maximoff    | Azure View         | 2024-12-07    | 2024-12-10  | 900.00        |
+| 1                 | John Doe          | Grand Hotel        | 2024-12-01    | 2024-12-05  | 1500.00       |
+| 4                 | Lara Croft        | Budget Inn         | 2024-12-15    | 2024-12-18  | 300.00        |
+| 8                 | Paul Durand       | Riverside Hotel    | 2024-12-05    | 2024-12-09  | 900.00        |
+| 9                 | Emily Davis       | City Center Lodge  | 2024-12-20    | 2024-12-22  | 700.00        |
+| 11                | Alice Cooper      | Hotel de Ville     | 2024-12-14    | 2024-12-19  | 2500.00       |
+| 13                | Laura Wilson      | Spa Paradise       | 2024-12-01    | 2024-12-03  | 1600.00       |
+| 18                | Ryan Gosling      | Modern Suites      | 2024-12-12    | 2024-12-16  | 800.00        |
+| 26                | Tony Stark        | Urban Stay         | 2024-12-15    | 2024-12-18  | 1300.00       |
+| 3                 | James Bond        | Mountain Lodge     | 2024-12-20    | 2024-12-25  | 600.00        |
+| 19                | Emma Watson       | Horizon Hotel      | 2024-12-03    | 2024-12-07  | 1700.00       |
+| 20                | Henry Cavill      | Cozy Cottage       | 2024-12-19    | 2024-12-24  | 1500.00       |
+| 29                | Carol Danvers     | Springfield Inn    | 2024-12-04    | 2024-12-08  | 1600.00       |
++-------------------+-------------------+--------------------+---------------+-------------+---------------+
+30 rows selected (1.131 seconds)
+>>>
+>>>  -- 4. Nombre de réservations par client
+>>>  SELECT c.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom;
+INFO  : Compiling command(queryId=hive_20251113110022_04f9e05d-0fc9-4566-9605-4bb3c611fbd8): SELECT c.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+INFO  : No Stats for hotel_booking@clients, Columns: nom, client_id
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:c.nom, type:string, comment:null), FieldSchema(name:nb_reservations, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110022_04f9e05d-0fc9-4566-9605-4bb3c611fbd8); Time taken: 0.151 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110022_04f9e05d-0fc9-4566-9605-4bb3c611fbd8): SELECT c.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+INFO  : Query ID = hive_20251113110022_04f9e05d-0fc9-4566-9605-4bb3c611fbd8
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110022_04f9e05d-0fc9-4566-9605-4bb3c611fbd8
+INFO  : Session is already open
+INFO  : Dag name: SELECT c.nom, COUNT(*......id
+GROUP BY c.nom (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110022_04f9e05d-0fc9-4566-9605-4bb3c611fbd8], Dag ID: [dag_1763031607104_0001_4], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110022_04f9e05d-0fc9-4566-9605-4bb3c611fbd8); Time taken: -0.247 seconds
++-------------------+------------------+
+|       c.nom       | nb_reservations  |
++-------------------+------------------+
+| Alex Dupont       | 1                |
+| Alice Cooper      | 1                |
+| Bruce Wayne       | 1                |
+| Carol Danvers     | 1                |
+| Chris Evans       | 1                |
+| Clara Oswald      | 1                |
+| Clark Kent        | 1                |
+| David Miller      | 1                |
+| Diana Prince      | 1                |
+| Emily Davis       | 1                |
+| Emma Watson       | 1                |
+| Henry Cavill      | 1                |
+| James Bond        | 1                |
+| John Doe          | 1                |
+| Lara Croft        | 1                |
+| Laura Wilson      | 1                |
+| Maria Gonzalez    | 1                |
+| Megan Fox         | 1                |
+| Natasha Romanoff  | 1                |
+| Oscar Wilde       | 1                |
+| Paul Durand       | 1                |
+| Peter Parker      | 1                |
+| Rachel Green      | 1                |
+| Robert Brown      | 1                |
+| Ryan Gosling      | 1                |
+| Sarah Connor      | 1                |
+| Sophie Martin     | 1                |
+| Steve Rogers      | 1                |
+| Tony Stark        | 1                |
+| Wanda Maximoff    | 1                |
++-------------------+------------------+
+30 rows selected (-0.082 seconds)
+>>>
+>>>  -- 5. Clients avec plus de 2 nuitées
+>>>  SELECT c.nom, SUM(DATEDIFF(r.date_fin, r.date_debut)) AS total_nuitees
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+HAVING total_nuitees > 2;
+INFO  : Compiling command(queryId=hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657): SELECT c.nom, SUM(DATEDIFF(r.date_fin, r.date_debut)) AS total_nuitees
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+HAVING total_nuitees > 2
+INFO  : Completed compiling command(queryId=hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657); Time taken: 0.018 seconds
+INFO  : Compiling command(queryId=hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657): SELECT c.nom, SUM(DATEDIFF(r.date_fin, r.date_debut)) AS total_nuitees        
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+HAVING total_nuitees > 2
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:c.nom, type:string, comment:null), FieldSchema(name:total_nuitees, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657); Time taken: 0.044 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657): SELECT c.nom, SUM(DATEDIFF(r.date_fin, r.date_debut)) AS total_nuitees        
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+HAVING total_nuitees > 2
+INFO  : Query ID = hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657
+INFO  : Session is already open
+INFO  : Dag name: SELECT c.nom, SUM(DAT......total_nuitees > 2 (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657], Dag ID: [dag_1763031607104_0001_5], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110022_ef0c6a82-8edd-4c48-8edb-545c4e2b9657); Time taken: 0.631 seconds
++-------------------+----------------+
+|       c.nom       | total_nuitees  |
++-------------------+----------------+
+| Alice Cooper      | 5              |
+| Bruce Wayne       | 3              |
+| Carol Danvers     | 4              |
+| Chris Evans       | 3              |
+| Clara Oswald      | 4              |
+| Clark Kent        | 3              |
+| Diana Prince      | 3              |
+| Emma Watson       | 4              |
+| Henry Cavill      | 5              |
+| James Bond        | 5              |
+| John Doe          | 4              |
+| Lara Croft        | 3              |
+| Megan Fox         | 3              |
+| Natasha Romanoff  | 3              |
+| Oscar Wilde       | 4              |
+| Paul Durand       | 4              |
+| Peter Parker      | 3              |
+| Rachel Green      | 4              |
+| Robert Brown      | 3              |
+| Ryan Gosling      | 4              |
+| Sarah Connor      | 5              |
+| Sophie Martin     | 5              |
+| Steve Rogers      | 4              |
+| Tony Stark        | 3              |
+| Wanda Maximoff    | 3              |
++-------------------+----------------+
+25 rows selected (0.709 seconds)
+>>>
+>>>  -- 6. Hôtels réservés par chaque client
+>>>  SELECT c.nom AS client, COLLECT_SET(h.nom) AS hotels_reserves
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY c.nom;
+INFO  : Compiling command(queryId=hive_20251113110023_076bd3f1-2fec-4ff1-9ffb-d9d187f49204): SELECT c.nom AS client, COLLECT_SET(h.nom) AS hotels_reserves
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY c.nom
+INFO  : No Stats for hotel_booking@clients, Columns: nom, client_id
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:client, type:string, comment:null), FieldSchema(name:hotels_reserves, type:array<string>, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110023_076bd3f1-2fec-4ff1-9ffb-d9d187f49204); Time taken: 0.24 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110023_076bd3f1-2fec-4ff1-9ffb-d9d187f49204): SELECT c.nom AS client, COLLECT_SET(h.nom) AS hotels_reserves
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY c.nom
+INFO  : Query ID = hive_20251113110023_076bd3f1-2fec-4ff1-9ffb-d9d187f49204
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110023_076bd3f1-2fec-4ff1-9ffb-d9d187f49204
+INFO  : Session is already open
+INFO  : Dag name: SELECT c.nom AS clien......id
+GROUP BY c.nom (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110023_076bd3f1-2fec-4ff1-9ffb-d9d187f49204], Dag ID: [dag_1763031607104_0001_6], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110023_076bd3f1-2fec-4ff1-9ffb-d9d187f49204); Time taken: 0.757 seconds
++-------------------+------------------------+
+|      client       |    hotels_reserves     |
++-------------------+------------------------+
+| Alex Dupont       | ["Sea Breeze"]         |
+| Alice Cooper      | ["Hotel de Ville"]     |
+| Bruce Wayne       | ["Oceanic Hotel"]      |
+| Carol Danvers     | ["Springfield Inn"]    |
+| Chris Evans       | ["Villa Tranquille"]   |
+| Clara Oswald      | ["Winter Haven"]       |
+| Clark Kent        | ["Cloud Nine"]         |
+| David Miller      | ["Forest Escape"]      |
+| Diana Prince      | ["Hilltop Inn"]        |
+| Emily Davis       | ["City Center Lodge"]  |
+| Emma Watson       | ["Horizon Hotel"]      |
+| Henry Cavill      | ["Cozy Cottage"]       |
+| James Bond        | ["Mountain Lodge"]     |
+| John Doe          | ["Grand Hotel"]        |
+| Lara Croft        | ["Budget Inn"]         |
+| Laura Wilson      | ["Spa Paradise"]       |
+| Maria Gonzalez    | ["Luxury Palace"]      |
+| Megan Fox         | ["Lakeview Resort"]    |
+| Natasha Romanoff  | ["Heritage Hotel"]     |
+| Oscar Wilde       | ["Château Bellevue"]   |
+| Paul Durand       | ["Riverside Hotel"]    |
+| Peter Parker      | ["Golden Sands"]       |
+| Rachel Green      | ["Sunrise Inn"]        |
+| Robert Brown      | ["Eco Stay"]           |
+| Ryan Gosling      | ["Modern Suites"]      |
+| Sarah Connor      | ["Beach Resort"]       |
+| Sophie Martin     | ["Country Retreat"]    |
+| Steve Rogers      | ["Royal Retreat"]      |
+| Tony Stark        | ["Urban Stay"]         |
+| Wanda Maximoff    | ["Azure View"]         |
++-------------------+------------------------+
+30 rows selected (1.009 seconds)
+>>>
+>>>  -- 7. Hôtels avec plus d'une réservation
+>>>  SELECT h.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.nom
+HAVING nb_reservations > 1;
+INFO  : Compiling command(queryId=hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483): SELECT h.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.nom
+HAVING nb_reservations > 1
+INFO  : Completed compiling command(queryId=hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483); Time taken: 0.018 seconds
+INFO  : Compiling command(queryId=hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483): SELECT h.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.nom
+HAVING nb_reservations > 1
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:h.nom, type:string, comment:null), FieldSchema(name:nb_reservations, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483); Time taken: 0.081 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483): SELECT h.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.nom
+HAVING nb_reservations > 1
+INFO  : Query ID = hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483
+INFO  : Session is already open
+INFO  : Dag name: SELECT h.nom, COUNT(*......_reservations > 1 (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483], Dag ID: [dag_1763031607104_0001_7], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110024_0196336c-a665-4c66-8c4c-6edcfa8e2483); Time taken: 0.565 seconds
++--------+------------------+
+| h.nom  | nb_reservations  |
++--------+------------------+
++--------+------------------+
+No rows selected (0.676 seconds)
+>>>
+>>>  -- 8. Hôtels sans réservation
+>>>  SELECT h.nom
+FROM hotels h
+LEFT JOIN reservations r ON h.hotel_id = r.hotel_id
+WHERE r.reservation_id IS NULL;
+INFO  : Compiling command(queryId=hive_20251113110025_38438ee4-e1b7-4ffc-a057-89a5e2e65e17): SELECT h.nom
+FROM hotels h
+LEFT JOIN reservations r ON h.hotel_id = r.hotel_id
+WHERE r.reservation_id IS NULL
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:h.nom, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110025_38438ee4-e1b7-4ffc-a057-89a5e2e65e17); Time taken: 0.126 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110025_38438ee4-e1b7-4ffc-a057-89a5e2e65e17): SELECT h.nom
+FROM hotels h
+LEFT JOIN reservations r ON h.hotel_id = r.hotel_id
+WHERE r.reservation_id IS NULL
+INFO  : Query ID = hive_20251113110025_38438ee4-e1b7-4ffc-a057-89a5e2e65e17
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110025_38438ee4-e1b7-4ffc-a057-89a5e2e65e17
+INFO  : Session is already open
+INFO  : Dag name: SELECT h.nom
+FROM hot......vation_id IS NULL (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110025_38438ee4-e1b7-4ffc-a057-89a5e2e65e17], Dag ID: [dag_1763031607104_0001_8], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110025_38438ee4-e1b7-4ffc-a057-89a5e2e65e17); Time taken: 0.392 seconds
++--------+
+| h.nom  |
++--------+
++--------+
+No rows selected (0.525 seconds)
+>>>
+>>>  -- 9. Clients ayant réservé un hôtel > 4 étoiles
+>>>  SELECT DISTINCT c.nom
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+WHERE h.etoiles > 4;
+INFO  : Compiling command(queryId=hive_20251113110025_e820046a-c845-4949-9fe2-1c4838c12484): SELECT DISTINCT c.nom
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+WHERE h.etoiles > 4
+INFO  : No Stats for hotel_booking@clients, Columns: nom, client_id
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:c.nom, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110025_e820046a-c845-4949-9fe2-1c4838c12484); Time taken: 0.279 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110025_e820046a-c845-4949-9fe2-1c4838c12484): SELECT DISTINCT c.nom
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+JOIN hotels h ON r.hotel_id = h.hotel_id
+WHERE h.etoiles > 4
+INFO  : Query ID = hive_20251113110025_e820046a-c845-4949-9fe2-1c4838c12484
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110025_e820046a-c845-4949-9fe2-1c4838c12484
+INFO  : Session is already open
+INFO  : Dag name: SELECT DISTINCT c.nom......ERE h.etoiles > 4 (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110025_e820046a-c845-4949-9fe2-1c4838c12484], Dag ID: [dag_1763031607104_0001_9], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110025_e820046a-c845-4949-9fe2-1c4838c12484); Time taken: 0.923 seconds
++-----------------+
+|      c.nom      |
++-----------------+
+| Alice Cooper    |
+| Bruce Wayne     |
+| Clark Kent      |
+| John Doe        |
+| Laura Wilson    |
+| Maria Gonzalez  |
+| Oscar Wilde     |
+| Steve Rogers    |
++-----------------+
+8 rows selected (1.214 seconds)
+>>>
+>>>  -- 10. Total des revenus générés par chaque hôtel
+>>>  SELECT h.nom, SUM(r.prix_total) AS total_revenus
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.nom;
+INFO  : Compiling command(queryId=hive_20251113110026_5b2fe64d-0989-4eaa-b61e-7dda6a148bf7): SELECT h.nom, SUM(r.prix_total) AS total_revenus
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.nom
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:h.nom, type:string, comment:null), FieldSchema(name:total_revenus, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110026_5b2fe64d-0989-4eaa-b61e-7dda6a148bf7); Time taken: 0.201 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110026_5b2fe64d-0989-4eaa-b61e-7dda6a148bf7): SELECT h.nom, SUM(r.prix_total) AS total_revenus
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.nom
+INFO  : Query ID = hive_20251113110026_5b2fe64d-0989-4eaa-b61e-7dda6a148bf7
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110026_5b2fe64d-0989-4eaa-b61e-7dda6a148bf7
+INFO  : Session is already open
+INFO  : Dag name: SELECT h.nom, SUM(r.p......id
+GROUP BY h.nom (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110026_5b2fe64d-0989-4eaa-b61e-7dda6a148bf7], Dag ID: [dag_1763031607104_0001_10], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110026_5b2fe64d-0989-4eaa-b61e-7dda6a148bf7); Time taken: 0.583 seconds
++--------------------+----------------+
+|       h.nom        | total_revenus  |
++--------------------+----------------+
+| Azure View         | 900.00         |
+| Beach Resort       | 800.00         |
+| Budget Inn         | 300.00         |
+| Château Bellevue   | 1300.00        |
+| City Center Lodge  | 700.00         |
+| Cloud Nine         | 2000.00        |
+| Country Retreat    | 1000.00        |
+| Cozy Cottage       | 1500.00        |
+| Eco Stay           | 500.00         |
+| Forest Escape      | 1800.00        |
+| Golden Sands       | 1800.00        |
+| Grand Hotel        | 1500.00        |
+| Heritage Hotel     | 1400.00        |
+| Hilltop Inn        | 2200.00        |
+| Horizon Hotel      | 1700.00        |
+| Hotel de Ville     | 2500.00        |
+| Lakeview Resort    | 2100.00        |
+| Luxury Palace      | 2000.00        |
+| Modern Suites      | 800.00         |
+| Mountain Lodge     | 600.00         |
+| Oceanic Hotel      | 2400.00        |
+| Riverside Hotel    | 900.00         |
+| Royal Retreat      | 1200.00        |
+| Sea Breeze         | 1200.00        |
+| Spa Paradise       | 1600.00        |
+| Springfield Inn    | 1600.00        |
+| Sunrise Inn        | 900.00         |
+| Urban Stay         | 1300.00        |
+| Villa Tranquille   | 1400.00        |
+| Winter Haven       | 1200.00        |
++--------------------+----------------+
+30 rows selected (0.795 seconds)
+>>>
+>>>  -- 11. Revenus totaux par ville
+>>>  SELECT h.ville, SUM(r.prix_total) AS revenus_totaux
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.ville;
+INFO  : Compiling command(queryId=hive_20251113110027_336199fc-731d-4e7c-a485-d360f57768b1): SELECT h.ville, SUM(r.prix_total) AS revenus_totaux
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.ville
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:h.ville, type:string, comment:null), FieldSchema(name:revenus_totaux, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110027_336199fc-731d-4e7c-a485-d360f57768b1); Time taken: 0.16 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110027_336199fc-731d-4e7c-a485-d360f57768b1): SELECT h.ville, SUM(r.prix_total) AS revenus_totaux
+FROM reservations r
+JOIN hotels h ON r.hotel_id = h.hotel_id
+GROUP BY h.ville
+INFO  : Query ID = hive_20251113110027_336199fc-731d-4e7c-a485-d360f57768b1
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110027_336199fc-731d-4e7c-a485-d360f57768b1
+INFO  : Session is already open
+INFO  : Dag name: SELECT h.ville, SUM(r......
+GROUP BY h.ville (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110027_336199fc-731d-4e7c-a485-d360f57768b1], Dag ID: [dag_1763031607104_0001_11], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+INFO  : Completed executing command(queryId=hive_20251113110027_336199fc-731d-4e7c-a485-d360f57768b1); Time taken: 0.585 seconds
++------------------+-----------------+
+|     h.ville      | revenus_totaux  |
++------------------+-----------------+
+| Aix-en-Provence  | 1600.00         |
+| Ajaccio          | 900.00          |
+| Angers           | 1600.00         |
+| Annecy           | 1800.00         |
+| Avignon          | 2200.00         |
+| Biarritz         | 1200.00         |
+| Bordeaux         | 2100.00         |
+| Brest            | 1500.00         |
+| Cannes           | 2000.00         |
+| Chamonix         | 600.00          |
+| Dijon            | 1000.00         |
+| Grenoble         | 500.00          |
+| La Rochelle      | 1800.00         |
+| Le Havre         | 1300.00         |
+| Lille            | 1200.00         |
+| Lyon             | 300.00          |
+| Marseille        | 700.00          |
+| Metz             | 1200.00         |
+| Montpellier      | 900.00          |
+| Nancy            | 800.00          |
+| Nantes           | 1300.00         |
+| Nice             | 800.00          |
+| Paris            | 1500.00         |
+| Perpignan        | 1400.00         |
+| Reims            | 2000.00         |
+| Rennes           | 1400.00         |
+| Saint-Malo       | 2400.00         |
+| Strasbourg       | 900.00          |
+| Toulouse         | 2500.00         |
+| Tours            | 1700.00         |
++------------------+-----------------+
+30 rows selected (0.757 seconds)
+>>>
+>>>  -- 12. Nombre total de réservations par client
+>>>  SELECT c.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom;
+INFO  : Compiling command(queryId=hive_20251113110028_7d4d505b-8b7d-497c-8fc3-e8b349a5965f): SELECT c.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+INFO  : No Stats for hotel_booking@clients, Columns: nom, client_id
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:c.nom, type:string, comment:null), FieldSchema(name:nb_reservations, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20251113110028_7d4d505b-8b7d-497c-8fc3-e8b349a5965f); Time taken: 0.12 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=hive_20251113110028_7d4d505b-8b7d-497c-8fc3-e8b349a5965f): SELECT c.nom, COUNT(*) AS nb_reservations
+FROM reservations r
+JOIN clients c ON r.client_id = c.client_id
+GROUP BY c.nom
+INFO  : Query ID = hive_20251113110028_7d4d505b-8b7d-497c-8fc3-e8b349a5965f
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20251113110028_7d4d505b-8b7d-497c-8fc3-e8b349a5965f
+INFO  : Session is already open
+INFO  : Dag name: SELECT c.nom, COUNT(*......id
+GROUP BY c.nom (Stage-1)
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : HS2 Host: [41b13241d4c2], Query ID: [hive_20251113110028_7d4d505b-8b7d-497c-8fc3-e8b349a5965f], Dag ID: [dag_1763031607104_0001_12], DAG Session ID: [application_1763031607104_0001]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1763031607104_0001)
+
+----------------------------------------------------------------------------------------------
+        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+----------------------------------------------------------------------------------------------
+Map 3 .......... container     SUCCEEDED      1          1        0        0       0       0
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0
+----------------------------------------------------------------------------------------------
+VERTICES: 03/03  [==========================>>] 100%  ELAPSED TIME: 1.11 s     
+----------------------------------------------------------------------------------------------
+INFO  : Completed executing command(queryId=hive_20251113110028_7d4d505b-8b7d-497c-8fc3-e8b349a5965f); Time taken: 1.15 seconds
++-------------------+------------------+
+|       c.nom       | nb_reservations  |
++-------------------+------------------+
+| Alex Dupont       | 1                |
+| Alice Cooper      | 1                |
+| Bruce Wayne       | 1                |
+| Carol Danvers     | 1                |
+| Chris Evans       | 1                |
+| Clara Oswald      | 1                |
+| Clark Kent        | 1                |
+| David Miller      | 1                |
+| Diana Prince      | 1                |
+| Emily Davis       | 1                |
+| Emma Watson       | 1                |
+| Henry Cavill      | 1                |
+| James Bond        | 1                |
+| John Doe          | 1                |
+| Lara Croft        | 1                |
+| James Bond        | 1                |
+| John Doe          | 1                |
+| James Bond        | 1                |
+| James Bond        | 1                |
+| John Doe          | 1                |
+| Lara Croft        | 1                |
+| Laura Wilson      | 1                |
+| Maria Gonzalez    | 1                |
+| Megan Fox         | 1                |
+| Natasha Romanoff  | 1                |
+| Oscar Wilde       | 1                |
+| Paul Durand       | 1                |
+| Peter Parker      | 1                |
+| Rachel Green      | 1                |
+| Robert Brown      | 1                |
+| Ryan Gosling      | 1                |
+| Sarah Connor      | 1                |
+| Sophie Martin     | 1                |
+| Steve Rogers      | 1                |
+| Tony Stark        | 1                |
+| Wanda Maximoff    | 1                |
++-------------------+------------------+
+30 rows selected (1.281 seconds)
+0: jdbc:hive2://localhost:10000> [WARN] Failed to create directory: /home/hive/.beeline
+No such file or directory
+Closing: 0: jdbc:hive2://localhost:10000
