@@ -1,0 +1,326 @@
+root@hadoop-master:~# hbase shell
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hbase/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+HBase Shell
+Use "help" to get list of supported commands.
+Use "exit" to quit this interactive shell.
+Version 1.4.12, r6ae4a77408ad35d6a7a4e5cebfd401fc4b72b5ec, Sun Nov 24 13:25:41 CST 2019
+
+hbase(main):001:0> scan 'products'
+ROW                                 COLUMN+CELL
+ 1                                  column=cf:amount, timestamp=1763228233781, value=214.05
+ 1                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 1                                  column=cf:payment, timestamp=1763228233781, value=Amex
+ 1                                  column=cf:product, timestamp=1763228233781, value=Men's Clothing
+ 1                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 1                                  column=cf:town, timestamp=1763228233781, value=San Jose
+ 10                                 column=cf:amount, timestamp=1763228233781, value=213.88
+ 10                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 10                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 10                                 column=cf:product, timestamp=1763228233781, value=Toys
+ 10                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 10                                 column=cf:town, timestamp=1763228233781, value=Fort Worth
+ 11                                 column=cf:amount, timestamp=1763228233781, value=53.26
+ 11                                 column=cf:date, timestamp=1763228233781, value=2012-01-01                                           
+ 11                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 11                                 column=cf:product, timestamp=1763228233781, value=Video Games
+ 11                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 11                                 column=cf:town, timestamp=1763228233781, value=Las Vegas
+ 12                                 column=cf:amount, timestamp=1763228233781, value=39.75
+ 12                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 12                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 12                                 column=cf:product, timestamp=1763228233781, value=Video Games
+ 12                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 12                                 column=cf:town, timestamp=1763228233781, value=Newark
+ 13                                 column=cf:amount, timestamp=1763228233781, value=469.63
+ 13                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 13                                 column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 13                                 column=cf:product, timestamp=1763228233781, value=Cameras
+ 13                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 13                                 column=cf:town, timestamp=1763228233781, value=Austin
+ 14                                 column=cf:amount, timestamp=1763228233781, value=290.82
+ 14                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 14                                 column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 14                                 column=cf:product, timestamp=1763228233781, value=DVDs
+ 14                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 14                                 column=cf:town, timestamp=1763228233781, value=Greensboro
+ 15                                 column=cf:amount, timestamp=1763228233781, value=260.65
+ 15                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 15                                 column=cf:payment, timestamp=1763228233781, value=Discover
+ 15                                 column=cf:product, timestamp=1763228233781, value=Music
+ 15                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 15                                 column=cf:town, timestamp=1763228233781, value=San Francisco
+ 16                                 column=cf:amount, timestamp=1763228233781, value=136.9
+ 16                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 16                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 16                                 column=cf:product, timestamp=1763228233781, value=Garden
+ 16                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 16                                 column=cf:town, timestamp=1763228233781, value=Lincoln
+ 17                                 column=cf:amount, timestamp=1763228233781, value=483.82
+ 17                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 17                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 17                                 column=cf:product, timestamp=1763228233781, value=Women's Clothing
+ 17                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 17                                 column=cf:town, timestamp=1763228233781, value=Buffalo
+ 18                                 column=cf:amount, timestamp=1763228233781, value=215.82
+ 18                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 18                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 18                                 column=cf:product, timestamp=1763228233781, value=Women's Clothing
+ 18                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 18                                 column=cf:town, timestamp=1763228233781, value=San Jose
+ 19                                 column=cf:amount, timestamp=1763228233781, value=418.94
+ 19                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 19                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 19                                 column=cf:product, timestamp=1763228233781, value=Cameras
+ 19                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 19                                 column=cf:town, timestamp=1763228233781, value=Boston
+ 2                                  column=cf:amount, timestamp=1763228233781, value=153.57
+ 2                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 2                                  column=cf:payment, timestamp=1763228233781, value=Visa
+ 2                                  column=cf:product, timestamp=1763228233781, value=Women's Clothing
+ 2                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 2                                  column=cf:town, timestamp=1763228233781, value=Fort Worth
+ 20                                 column=cf:amount, timestamp=1763228233781, value=309.16
+ 20                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 20                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 20                                 column=cf:product, timestamp=1763228233781, value=Baby
+ 20                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 20                                 column=cf:town, timestamp=1763228233781, value=Houston
+ 21                                 column=cf:amount, timestamp=1763228233781, value=93.39
+ 21                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 21                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 21                                 column=cf:product, timestamp=1763228233781, value=Books
+ 21                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 21                                 column=cf:town, timestamp=1763228233781, value=Las Vegas
+ 22                                 column=cf:amount, timestamp=1763228233781, value=376.11
+ 22                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 22                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 22                                 column=cf:product, timestamp=1763228233781, value=Children's Clothing
+ 22                                 column=cf:time, timestamp=1763228233781, value=09:00
+ 22                                 column=cf:town, timestamp=1763228233781, value=Virginia Beach
+ 23                                 column=cf:amount, timestamp=1763228233781, value=252.88
+ 23                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 23                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 23                                 column=cf:product, timestamp=1763228233781, value=Consumer Electronics
+ 23                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 23                                 column=cf:town, timestamp=1763228233781, value=Riverside
+ 24                                 column=cf:amount, timestamp=1763228233781, value=205.06
+ 24                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 24                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 24                                 column=cf:product, timestamp=1763228233781, value=Baby
+ 24                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 24                                 column=cf:town, timestamp=1763228233781, value=Tulsa
+ 25                                 column=cf:amount, timestamp=1763228233781, value=88.25
+ 25                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 25                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 25                                 column=cf:product, timestamp=1763228233781, value=Crafts
+ 25                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 25                                 column=cf:town, timestamp=1763228233781, value=Reno
+ 26                                 column=cf:amount, timestamp=1763228233781, value=31.08
+ 26                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 26                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 26                                 column=cf:product, timestamp=1763228233781, value=Books
+ 26                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 26                                 column=cf:town, timestamp=1763228233781, value=Chicago
+ 27                                 column=cf:amount, timestamp=1763228233781, value=370.55
+ 27                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 27                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 27                                 column=cf:product, timestamp=1763228233781, value=Men's Clothing
+ 27                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 27                                 column=cf:town, timestamp=1763228233781, value=Fort Wayne
+ 28                                 column=cf:amount, timestamp=1763228233781, value=170.2
+ 28                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 28                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 28                                 column=cf:product, timestamp=1763228233781, value=Consumer Electronics
+ 28                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 28                                 column=cf:town, timestamp=1763228233781, value=San Bernardino
+ 29                                 column=cf:amount, timestamp=1763228233781, value=16.78
+ 29                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 29                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 29                                 column=cf:product, timestamp=1763228233781, value=Men's Clothing
+ 29                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 29                                 column=cf:town, timestamp=1763228233781, value=Madison
+ 3                                  column=cf:amount, timestamp=1763228233781, value=66.08
+ 3                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 3                                  column=cf:payment, timestamp=1763228233781, value=Cash
+ 3                                  column=cf:product, timestamp=1763228233781, value=Music
+ 3                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 3                                  column=cf:town, timestamp=1763228233781, value=San Diego
+ 30                                 column=cf:amount, timestamp=1763228233781, value=327.75
+ 30                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 30                                 column=cf:payment, timestamp=1763228233781, value=Discover
+ 30                                 column=cf:product, timestamp=1763228233781, value=Sporting Goods
+ 30                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 30                                 column=cf:town, timestamp=1763228233781, value=Austin
+ 31                                 column=cf:amount, timestamp=1763228233781, value=108.69
+ 31                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 31                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 31                                 column=cf:product, timestamp=1763228233781, value=CDs
+ 31                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 31                                 column=cf:town, timestamp=1763228233781, value=Portland
+ 32                                 column=cf:amount, timestamp=1763228233781, value=15.41
+ 32                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 32                                 column=cf:payment, timestamp=1763228233781, value=Discover
+ 32                                 column=cf:product, timestamp=1763228233781, value=Sporting Goods
+ 32                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 32                                 column=cf:town, timestamp=1763228233781, value=Riverside
+ 33                                 column=cf:amount, timestamp=1763228233781, value=80.46
+ 33                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 33                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 33                                 column=cf:product, timestamp=1763228233781, value=Toys
+ 33                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 33                                 column=cf:town, timestamp=1763228233781, value=Reno
+ 34                                 column=cf:amount, timestamp=1763228233781, value=298.86
+ 34                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 34                                 column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 34                                 column=cf:product, timestamp=1763228233781, value=Music
+ 34                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 34                                 column=cf:town, timestamp=1763228233781, value=Anchorage
+ 35                                 column=cf:amount, timestamp=1763228233781, value=475.26
+ 35                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 35                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 35                                 column=cf:product, timestamp=1763228233781, value=Sporting Goods
+ 35                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 35                                 column=cf:town, timestamp=1763228233781, value=Pittsburgh
+ 36                                 column=cf:amount, timestamp=1763228233781, value=3.85
+ 36                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 36                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 36                                 column=cf:product, timestamp=1763228233781, value=Garden
+ 36                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 36                                 column=cf:town, timestamp=1763228233781, value=Spokane
+ 37                                 column=cf:amount, timestamp=1763228233781, value=287.65
+ 37                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 37                                 column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 37                                 column=cf:product, timestamp=1763228233781, value=Computers
+ 37                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 37                                 column=cf:town, timestamp=1763228233781, value=Spokane
+ 38                                 column=cf:amount, timestamp=1763228233781, value=466.64
+ 38                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 38                                 column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 38                                 column=cf:product, timestamp=1763228233781, value=CDs
+ 38                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 38                                 column=cf:town, timestamp=1763228233781, value=Fresno
+ 39                                 column=cf:amount, timestamp=1763228233781, value=255.68
+ 39                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 39                                 column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 39                                 column=cf:product, timestamp=1763228233781, value=Baby
+ 39                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 39                                 column=cf:town, timestamp=1763228233781, value=Omaha
+ 4                                  column=cf:amount, timestamp=1763228233781, value=493.16
+ 4                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 4                                  column=cf:payment, timestamp=1763228233781, value=Discover
+ 4                                  column=cf:product, timestamp=1763228233781, value=Pet Supplies
+ 4                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 4                                  column=cf:town, timestamp=1763228233781, value=Pittsburgh
+ 40                                 column=cf:amount, timestamp=1763228233781, value=6.38
+ 40                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 40                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 40                                 column=cf:product, timestamp=1763228233781, value=DVDs
+ 40                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 40                                 column=cf:town, timestamp=1763228233781, value=Anchorage
+ 41                                 column=cf:amount, timestamp=1763228233781, value=117.81
+ 41                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 41                                 column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 41                                 column=cf:product, timestamp=1763228233781, value=Consumer Electronics
+ 41                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 41                                 column=cf:town, timestamp=1763228233781, value=Aurora
+ 42                                 column=cf:amount, timestamp=1763228233781, value=351.31
+ 42                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 42                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 42                                 column=cf:product, timestamp=1763228233781, value=DVDs
+ 42                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 42                                 column=cf:town, timestamp=1763228233781, value=Philadelphia
+ 43                                 column=cf:amount, timestamp=1763228233781, value=222.61
+ 43                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 43                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 43                                 column=cf:product, timestamp=1763228233781, value=Baby
+ 43                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 43                                 column=cf:town, timestamp=1763228233781, value=Fremont
+ 44                                 column=cf:amount, timestamp=1763228233781, value=22.36
+ 44                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 44                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 44                                 column=cf:product, timestamp=1763228233781, value=Crafts
+ 44                                 column=cf:time, timestamp=1763228233781, value=09:01
+ 44                                 column=cf:town, timestamp=1763228233781, value=Anchorage
+ 45                                 column=cf:amount, timestamp=1763228233781, value=189.01
+ 45                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 45                                 column=cf:payment, timestamp=1763228233781, value=Amex
+ 45                                 column=cf:product, timestamp=1763228233781, value=Women's Clothing
+ 45                                 column=cf:time, timestamp=1763228233781, value=09:02
+ 45                                 column=cf:town, timestamp=1763228233781, value=Norfolk
+ 46                                 column=cf:amount, timestamp=1763228233781, value=414.08
+ 46                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 46                                 column=cf:payment, timestamp=1763228233781, value=Cash
+ 46                                 column=cf:product, timestamp=1763228233781, value=Books
+ 46                                 column=cf:time, timestamp=1763228233781, value=09:02
+ 46                                 column=cf:town, timestamp=1763228233781, value=Chandler
+ 47                                 column=cf:amount, timestamp=1763228233781, value=182.05
+ 47                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 47                                 column=cf:payment, timestamp=1763228233781, value=Visa
+ 47                                 column=cf:product, timestamp=1763228233781, value=Computers
+ 47                                 column=cf:time, timestamp=1763228233781, value=09:02
+ 47                                 column=cf:town, timestamp=1763228233781, value=Minneapolis
+ 48                                 column=cf:amount, timestamp=1763228233781, value=345.18
+ 48                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 48                                 column=cf:payment, timestamp=1763228233781, value=Discover
+ 48                                 column=cf:product, timestamp=1763228233781, value=Cameras
+ 48                                 column=cf:time, timestamp=1763228233781, value=09:02
+ 48                                 column=cf:town, timestamp=1763228233781, value=Honolulu
+ 49                                 column=cf:amount, timestamp=1763228233781, value=135.96
+ 49                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 49                                 column=cf:payment, timestamp=1763228233781, value=Discover
+ 49                                 column=cf:product, timestamp=1763228233781, value=Books
+ 49                                 column=cf:time, timestamp=1763228233781, value=09:02
+ 49                                 column=cf:town, timestamp=1763228233781, value=Indianapolis
+ 5                                  column=cf:amount, timestamp=1763228233781, value=235.63
+ 5                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 5                                  column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 5                                  column=cf:product, timestamp=1763228233781, value=Children's Clothing
+ 5                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 5                                  column=cf:town, timestamp=1763228233781, value=Omaha
+ 50                                 column=cf:amount, timestamp=1763228233781, value=344.09
+ 50                                 column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 50                                 column=cf:payment, timestamp=1763228233781, value=Discover
+ 50                                 column=cf:product, timestamp=1763228233781, value=Books
+ 50                                 column=cf:time, timestamp=1763228233781, value=09:02
+ 50                                 column=cf:town, timestamp=1763228233781, value=Chandler
+ 6                                  column=cf:amount, timestamp=1763228233781, value=247.18
+ 6                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 6                                  column=cf:payment, timestamp=1763228233781, value=MasterCard
+ 6                                  column=cf:product, timestamp=1763228233781, value=Men's Clothing
+ 6                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 6                                  column=cf:town, timestamp=1763228233781, value=Stockton
+ 7                                  column=cf:amount, timestamp=1763228233781, value=379.6
+ 7                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 7                                  column=cf:payment, timestamp=1763228233781, value=Visa
+ 7                                  column=cf:product, timestamp=1763228233781, value=Cameras
+ 7                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 7                                  column=cf:town, timestamp=1763228233781, value=Austin
+ 8                                  column=cf:amount, timestamp=1763228233781, value=296.8
+ 8                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 8                                  column=cf:payment, timestamp=1763228233781, value=Cash
+ 8                                  column=cf:product, timestamp=1763228233781, value=Consumer Electronics
+ 8                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 8                                  column=cf:town, timestamp=1763228233781, value=New York
+ 9                                  column=cf:amount, timestamp=1763228233781, value=25.38
+ 9                                  column=cf:date, timestamp=1763228233781, value=2012-01-01
+ 9                                  column=cf:payment, timestamp=1763228233781, value=Discover
+ 9                                  column=cf:product, timestamp=1763228233781, value=Toys
+ 9                                  column=cf:time, timestamp=1763228233781, value=09:00
+ 9                                  column=cf:town, timestamp=1763228233781, value=Corpus Christi
+50 row(s) in 0.3390 seconds
+
+hbase(main):002:0> 
+
+
+
+
+hbase(main):002:0> get 'products','8',{COLUMN => 'cf:town'}
+COLUMN                              CELL
+ cf:town                            timestamp=1763228233781, value=New York
+1 row(s) in 0.0230 seconds
+
+hbase(main):003:0>
