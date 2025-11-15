@@ -1,0 +1,73 @@
+hbase(main):031:0> scan 'sales_ledger', {FILTER => "RowFilter(>, 'binary:102')"}
+ROW                                         COLUMN+CELL
+ 103                                        column=costumer:city, timestamp=1763200299647, value=Pittsburgh, PA
+ 103                                        column=costumer:name, timestamp=1763200293268, value=Bill Green
+ 103                                        column=sales:amount, timestamp=1763200315759, value=$500.00
+ 103                                        column=sales:product, timestamp=1763200307423, value=Desk
+ 104                                        column=costumer:city, timestamp=1763200328878, value=St. Louis, MO
+ 104                                        column=costumer:name, timestamp=1763200320808, value=Jack Black
+ 104                                        column=sales:amount, timestamp=1763200342748, value=$1,600.00
+ 104                                        column=sales:product, timestamp=1763200334846, value=Bed
+2 row(s) in 0.0480 seconds
+
+hbase(main):032:0> scan 'sales_ledger', {FILTER => "FamilyFilter(=, 'binary:customer')"}
+ROW                                         COLUMN+CELL
+0 row(s) in 0.0400 seconds
+
+hbase(main):033:0> scan 'sales_ledger', {FILTER => "QualifierFilter(=, 'binary:amount')"}
+ROW                                         COLUMN+CELL
+ 101                                        column=sales:amount, timestamp=1763200236504, value=$400.00
+ 102                                        column=sales:amount, timestamp=1763200291324, value=$200.00
+ 103                                        column=sales:amount, timestamp=1763200315759, value=$500.00
+ 104                                        column=sales:amount, timestamp=1763200342748, value=$1,600.00
+4 row(s) in 0.0190 seconds
+
+hbase(main):034:0>
+
+hbase(main):034:0> scan 'sales_ledger', {FILTER => "ValueFilter(=, 'substring:Sofa')"}
+ROW                                         COLUMN+CELL
+0 row(s) in 0.0220 seconds
+
+
+hbase(main):035:0> scan 'sales_ledger', {FILTER => "SingleColumnValueFilter('sales', 'amount', =, 'binary:$450.00')"}
+ROW                                         COLUMN+CELL
+0 row(s) in 0.0210 seconds
+
+hbase(main):036:0>
+
+
+hbase(main):036:0> scan 'sales_ledger', {FILTER => "PrefixFilter('10')"}
+ROW                                         COLUMN+CELL
+ 101                                        column=costumer:city, timestamp=1763200221828, value=Los Angeles, CA
+ 101                                        column=costumer:name, timestamp=1763200209314, value=John White
+ 101                                        column=sales:amount, timestamp=1763200236504, value=$400.00
+ 101                                        column=sales:product, timestamp=1763200229243, value=Chairs
+ 102                                        column=costumer:city, timestamp=1763200271082, value=Atlanta, GA
+ 102                                        column=costumer:name, timestamp=1763200242538, value=Jane Brown
+ 102                                        column=sales:amount, timestamp=1763200291324, value=$200.00
+ 102                                        column=sales:product, timestamp=1763200278342, value=Lamps
+ 103                                        column=costumer:city, timestamp=1763200299647, value=Pittsburgh, PA
+ 103                                        column=costumer:name, timestamp=1763200293268, value=Bill Green
+ 103                                        column=sales:amount, timestamp=1763200315759, value=$500.00
+ 103                                        column=sales:product, timestamp=1763200307423, value=Desk
+ 104                                        column=costumer:city, timestamp=1763200328878, value=St. Louis, MO
+ 104                                        column=costumer:name, timestamp=1763200320808, value=Jack Black
+ 104                                        column=sales:amount, timestamp=1763200342748, value=$1,600.00
+ 104                                        column=sales:product, timestamp=1763200334846, value=Bed
+4 row(s) in 0.0340 seconds
+
+
+hbase(main):002:0> scan 'sales_ledger', {FILTER => "PageFilter(2)"}
+ROW                                 COLUMN+CELL
+ 101                                column=costumer:city, timestamp=1763200221828, value=Los Angeles, CA
+ 101                                column=costumer:name, timestamp=1763200209314, value=John White
+ 101                                column=sales:amount, timestamp=1763200236504, value=$400.00
+ 101                                column=sales:product, timestamp=1763200229243, value=Chairs
+ 102                                column=costumer:city, timestamp=1763200271082, value=Atlanta, GA
+ 102                                column=costumer:name, timestamp=1763200242538, value=Jane Brown
+ 102                                column=sales:amount, timestamp=1763200291324, value=$200.00
+ 102                                column=sales:product, timestamp=1763200278342, value=Lamps
+2 row(s) in 0.0280 seconds
+
+hbase(main):003:0>
+
